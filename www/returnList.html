@@ -1,0 +1,58 @@
+<ons-page ng-controller="ReturnController" ng-init="init()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="CommonService.updateAppData()">
+                <ons-icon icon="ion-refresh"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            返品依頼一覧
+        </div>
+    </ons-toolbar>
+    
+    <table class="ta-center mt-5px fs-11px">
+        <tr>
+            <td>顧客コード
+                <ons-input type="text" modifier="underbar" ng-model="form.userCode"></ons-input>
+            </td>
+            <td>顧客名
+                <ons-input type="text" modifier="underbar" ng-model="form.userName"></ons-input>
+            </td>
+            <td><ons-button ng-click="search(form)">検索</ons-button></td>
+        </tr>
+    </table>
+    <div class="ta-center mt-5px mb-5px">
+        <ons-button modifier="quiet" ng-click="filterStatus = '01'" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '01')}">
+            未処理
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="filterStatus = '02'" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '02')}">
+            処理済み
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="filterStatus = ''" class="filter-button" ng-class="{'filter-button-active': (!filterStatus)}">
+            ALL
+        </ons-button>
+    </div>
+    
+    <div ng-if="filterList.length == 0" class="ta-center" style="margin-top: 100px">
+        データはありません
+    </div>
+    
+    <table class="list-table">
+        <tr modifier="longdivider" class="reserve-list" ng-click="returnNavi.pushPage('returnDetail.html', {data: returnItem})"
+          ng-repeat="returnItem in filterList = (returnItemList | filter : {status: filterStatus} | orderBy: 'requestDate': true)" >
+            <td class="left fs-14px">
+                <div class="mt-10px mb-10px ml-10px">
+                    品番:{{returnItem.itemCode}}<br />
+                    サイズ:{{returnItem.sizeName}}<br />
+                    カラー:{{returnItem.colorName}}<br />
+                    依頼日:{{returnItem.returnRequestDate}}<br />
+                    依頼者:{{returnItem.userName}}様
+                </div>
+            </td>
+            <td class="right fs-14px ta-centers" style="min-width: 60px" ng-style="{color: returnItem.status == '01' ? '#FA5882' : '#81BEF7'}">
+                <span ng-if="returnItem.status == '01'">未処理</span>
+                <span ng-if="returnItem.status == '02'">処理済</span>
+            </td>
+        </tr>
+    </table>
+</ons-page>

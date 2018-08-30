@@ -1,0 +1,20 @@
+<ons-page ng-controller="ConfigController" ng-init="init()">
+    <ons-toolbar>
+        <dev class="center">
+            設定
+        </dev>
+    </ons-toolbar>
+    
+    <ons-list>
+        <ons-list-item  ng-click="configNavi.pushPage('shopPrefecture.html')" modifier="chevron longdivider">
+            店舗設定
+        </ons-list-item>
+        <ons-list-item ng-click="configNavi.pushPage('modelInfo.html')" modifier="chevron longdivider">
+            モデル情報登録
+        </ons-list-item>
+    </ons-list>
+    
+    <div class="ta-center mt-20px">
+        設定店舗：<span ng-if="!shopName">未設定</span>{{shopName}}
+    </div>
+</ons-page>

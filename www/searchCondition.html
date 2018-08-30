@@ -1,0 +1,30 @@
+<ons-dialog id="searchConditionDialog" var="searchConditionDialog" cancelable ng-controller="ReserveController" ng-init="searchInit()">
+    <ons-toolbar inline="">
+        <div class="center">
+            詳細検索
+        </div>
+    </ons-toolbar>
+    
+    <form>
+        <table class="form-table">
+            <tr>
+                <td style="width:50px">依頼者</td>
+                <td>
+                    <ons-input type="text" modifier="underbar" class="va-middle"></ons-input>
+                </td>
+            </tr>
+            <tr>
+                <td>依頼日</td>
+                <td>
+                    <ons-input type="date" style="width: 80px;"></ons-input>
+                    ～
+                    <ons-input type="date" style="width: 80px"></ons-input>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="mt-10px mb-10px ta-center">
+            <ons-button ng-click="search(cond)">絞り込み</ons-button>
+        </div>
+    </form>
+</ons-dialog>

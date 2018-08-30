@@ -1,0 +1,31 @@
+{
+    "plugins": [
+        "mobi.monaca.plugins.Monaca@3.1.0",
+        "mobi.monaca.plugins.WebIntent@1.0.0"
+    ],
+    "framework_version": "3.5",
+    "xcode_version": "8",
+    "cordova_version": "6.5",
+    "plugin_settings": [],
+    "external_plugins": [
+        "cordova-plugin-whitelist@1.3.1",
+        "cordova-plugin-splashscreen@4.0.3",
+        "cordova-plugin-device@1.1.6",
+        "cordova-plugin-file@4.3.3",
+        "cordova-plugin-file-transfer@1.6.3",
+        "cordova-plugin-geolocation@2.4.3",
+        "cordova-plugin-inappbrowser@1.7.1",
+        "cordova-plugin-network-information@1.3.3",
+        "cordova-plugin-dialogs@1.3.3",
+        "cordova-custom-config@2.0.3",
+        "cordova-plugin-camera@2.4.1",
+        "ncmb-push-monaca-plugin@2.0.7"
+    ],
+    "title-ja": "",
+    "title-en": "shop",
+    "description-ja": "",
+    "description-en": "",
+    "category": "User Template",
+    "platform": [],
+    "name": "generated-1506043931-58af834d8034516a393e4e85"
+}

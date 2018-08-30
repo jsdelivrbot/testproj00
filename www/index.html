@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <meta name="format-detection" content="telephone=no">
+    <script src="components/loader.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+    <script src="components/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="components/angular-bind-html-compile/angular-bind-html-compile.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+    <script src="components/monaca-jquery/jquery.js"></script>
+  
+    <script src="js/common.js"></script>
+    <script src="js/constant/apiUrl.js"></script>
+    <script src="js/constant/localStorageKey.js"></script>
+    <script src="js/constant/constant.js"></script>
+    <script src="js/constant/status.js"></script>
+    
+    <script src="js/factory/sharedScopes.js"></script>
+    <script src="js/factory/searchCondition.js"></script>
+    
+    <script src="js/service/commonService.js"></script>
+    <script src="js/service/storageService.js"></script>
+    <script src="js/service/imageService.js"></script>
+    <script src="js/service/httpService.js"></script>
+    <script src="js/service/dateService.js"></script>
+    <script src="js/service/shopService.js"></script>
+    <script src="js/service/requestService.js"></script>
+    <script src="js/service/returnService.js"></script>
+    <script src="js/service/chatService.js"></script>
+    <script src="js/service/stylingService.js"></script>
+    
+    <script src="js/controller/appController.js"></script>
+    <script src="js/controller/chatController.js"></script>
+    <script src="js/controller/deliveryController.js"></script>
+    <script src="js/controller/requestController.js"></script>
+    <script src="js/controller/reserveController.js"></script>
+    <script src="js/controller/returnController.js"></script>
+    <script src="js/controller/vmdController.js"></script>
+    <script src="js/controller/configController.js"></script>
+    <script src="js/controller/modelController.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <ons-page ng-controller="AppController" ng-init="init()">
+    <ons-tabbar var="menuTab" position="bottom" ons-postchange="CommonService.resetToPage()">
+      <ons-tab page="requestNavi.html" active>
+            <div class="tab-bar__icon">
+                <ons-icon icon="ion-pricetags"></ons-icon>
+            </div>
+            <div class="tab-bar__label">商品</div>
+            <div class="notification tab-notification" ng-if="requestUntreated">!</div>
+      </ons-tab>
+      <ons-tab page="returnNavi.html">
+          <div class="tab-bar__icon">
+                <ons-icon icon="ion-reply-all"></ons-icon>
+            </div>
+            <div class="tab-bar__label">返品</div>
+            <div class="notification tab-notification" ng-if="returnUntreated">!</div>
+      </ons-tab>
+      <ons-tab page="vmdNavi.html" label="スタイリング" icon="ion-tshirt"></ons-tab>
+      <ons-tab page="chatNavi.html">
+          <div class="tab-bar__icon">
+                <ons-icon icon="ion-chatboxes"></ons-icon>
+            </div>
+            <div class="tab-bar__label">チャット</div>
+            <div class="notification tab-notification" ng-if="chatUnread">!</div>
+      </ons-tab>
+      <ons-tab page="configNavi.html" label="設定" icon="ion-gear-b"></ons-tab>
+    </ons-tabbar>
+  </ons-page>
+</body>
+</html>

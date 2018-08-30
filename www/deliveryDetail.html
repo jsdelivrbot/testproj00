@@ -1,0 +1,77 @@
+<ons-page ng-controller="DeliveryController" ng-init="detailInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            配送管理
+        </div>
+    </ons-toolbar>
+    
+    <ons-row ng-repeat="item in order.orderDetailList" style="border-top: 1px solid #ccc">
+        <ons-col width="40%" align="center">
+            <img ng-src="{{item.imagePath1}}" alt="" width="100%" style="display:table-cell;vertical-align:middle" />
+        </ons-col>
+        <ons-col>
+            <ons-list>
+                <ons-list-header class="item-head ta-center">品番</ons-list-header>
+                <ons-list-item class="item-info">{{item.itemCode}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">商品名</ons-list-header>
+                <ons-list-item class="item-info">{{item.itemName}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">サイズ・カラー</ons-list-header>
+                <ons-list-item class="item-info">{{item.sizeName}}({{item.lcvSizeId}}):{{item.colorName}}({{item.lcvColorId}})</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">数量</ons-list-header>
+                <ons-list-item class="item-info">{{item.count}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">ステータス</ons-list-header>
+                <ons-list-item class="item-info">
+                    <select ng-if="item.status != DeliveryStatus.RETURNED" style="width:100px" class="text-input select" ng-model="item.status" ng-options="status.code as status.name for status in DeliveryStatusList.list" ></select>
+                
+                    <span ng-if="item.status == DeliveryStatus.RETURNED">{{item.returnedStatus == ReturnStatus.REQUEST ? '返品中' : '返品済み'}}</span>
+                </ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">バーコード情報</ons-list-header>
+                <ons-list-item class="item-info">
+                    {{order.orderId}},<br />{{shopCode}},<br />{{item.itemId}},<br />{{item.lcvSizeId}},{{item.lcvColorId}}
+                </ons-list-item>
+            </ons-list>
+        </ons-col>
+    </ons-row>
+    
+    <ons-list-header class="item-head ta-center">配送情報</ons-list-header>
+    <div class="reserve-info mt-10px">
+        <table class="va-middle mar-auto pad-auto">
+            <tr>
+                <td>受注ID</td>
+                <td>{{order.orderId}}</td>
+        	</tr>
+            <tr>
+                <td>依頼者</td>
+                <td>{{order.userCode}}&nbsp;&nbsp;{{order.userName}}様</td>
+            </tr>
+            <tr>
+                <td>依頼日</td>
+                <td>{{DateService.toDate(order.orderDate) | date: 'yyyy/MM/dd'}}</td>
+            </tr>
+            <tr>
+                <td>お届け先</td>
+                <td>{{order.address}}<br />{{order.deliveryUserName}}様</td>
+            </tr>
+            <tr>
+                <td>連絡先</td>
+                <td>{{order.tel}}</td>
+            </tr>
+            <tr>
+                <td>メモ</td>
+                <td><ons-input type="text" class="va-middle" modifier="underbar" ng-model="order.userMemo" style="width: 100%"></ons-input></td>
+            </tr>
+        </table>
+        <div class="ta-center mt-10px mb-10px">
+            <ons-button ng-click="change(order)">変更</ons-button>
+        </div>
+    </div>
+    
+</ons-page>

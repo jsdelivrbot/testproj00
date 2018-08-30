@@ -1,0 +1,61 @@
+<ons-page ng-controller="ReturnController" ng-init="detailInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            返品詳細
+        </div>
+    </ons-toolbar>
+    
+    <ons-row>
+        <ons-col width="40%" align="center">
+            <img ng-src="{{detail.imagePath1}}" alt="" width="100%" style="display:table-cell;vertical-align:middle" />
+        </ons-col>
+        <ons-col>
+            <ons-list>
+                <ons-list-header class="item-head ta-center">品番</ons-list-header>
+                <ons-list-item class="item-info">{{detail.itemCode}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">商品名</ons-list-header>
+                <ons-list-item class="item-info">{{detail.itemName}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">サイズ・カラー</ons-list-header>
+                <ons-list-item class="item-info">{{detail.sizeName}}({{detail.lcvSizeId}}):{{detail.colorName}}({{detail.lcvColorId}})</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">返品数量</ons-list-header>
+                <ons-list-item class="item-info">{{detail.count}}</ons-list-item>
+            </ons-list>
+        </ons-col>
+    </ons-row>
+    
+    <ons-list-header class="item-head ta-center">返品情報</ons-list-header>
+    <div class="reserve-info mt-10px">
+        <table class="va-middle mar-auto pad-auto">
+            <tr>
+            	<td>受注ID</td>
+                <td>{{detail.orderId}}</td>
+        	</tr>
+            <tr>
+                <td>依頼者</td>
+                <td>{{detail.userCode}}&nbsp;&nbsp;{{detail.userName}}様</td>
+            </tr>
+            <tr>
+                <td>依頼日</td>
+                <td>{{detail.returnRequestDate | date: 'yyyy/MM/dd'}}</td>
+            </tr>
+            <tr>
+                <td>お届け先</td>
+                <td>{{detail.address}}</td>
+            </tr>
+            <tr>
+                <td>連絡先</td>
+                <td>{{detail.tel}}</td>
+            </tr>
+        </table>
+        <div class="ta-center mt-10px mb-10px" ng-if="detail.status == '01'">
+            <ons-button ng-click="confirm(detail)">返品確認</ons-button>
+        </div>
+    </div>
+    
+</ons-page>

@@ -1,0 +1,29 @@
+<ons-page ng-controller="ChatController" ng-init="listInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="CommonService.updateAppData()">
+                <ons-icon icon="ion-refresh"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            チャット一覧
+        </div>
+    </ons-toolbar>
+    
+    <div ng-if="!chatList || chatList.length == 0" class="no-list-data">
+        チャットデータはありません
+    </div>
+    
+    <ons-list>
+        <ons-list-item ng-repeat="chat in chatList" modifier="longdivider chevron" ng-click="showDetail(chat)">
+            <div class="center">
+                <span class="list__item__title">{{chat.userName}}様</span>
+                <span class="list__item__subtitle">{{chat.lastPostDate}}</span>
+            </div>
+            <div class="right">
+                <div class="notification" ng-if="chat.readFlag == Flag.OFF">!</div>
+                <span ng-if="chat.type  == ChatType.REQUEST">[NEW]</span>
+            </div>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

@@ -1,0 +1,126 @@
+<ons-page ng-controller="RequestController" ng-init="listInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="CommonService.updateAppData()">
+                <ons-icon icon="ion-refresh"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            商品依頼一覧
+        </div>
+        <!--<div class="right">
+            <ons-toolbar-button ng-click="showCondition()">
+                <ons-icon icon="fa-search"></ons-icon>
+            </ons-toolbar-button>
+        </div>-->
+        <div class="right" ng-click="sort()">
+            <ons-toolbar-button>
+                <ons-icon icon="fa-sort-amount-desc" ng-if="ascFlag == Flag.ON"></ons-icon>
+                <ons-icon icon="fa-sort-amount-asc" ng-if="ascFlag == Flag.OFF"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <table class="ta-center mt-5px fs-11px">
+        <tr>
+            <td>顧客コード
+                <ons-input type="text" modifier="underbar" ng-model="form.userCode"></ons-input>
+            </td>
+            <td>顧客名
+                <ons-input type="text" modifier="underbar" ng-model="form.userName"></ons-input>
+            </td>
+            <td><ons-button ng-click="search(form)">検索</ons-button></td>
+        </tr>
+    </table>
+    
+    <ons-row class="tab-switch">
+        <ons-col class="tab-switch_item" ng-click="changeRequest(RequestStatus.RESERVE)" ng-class="{active: requestType == RequestStatus.RESERVE}">
+            店舗取り置き<span class="notification request-notification" ng-if="reserveNotification">!</span>
+        </ons-col>
+        <ons-col class="tab-switch_item" ng-click="changeRequest(RequestStatus.DELIVERY)" ng-class="{active: requestType == RequestStatus.DELIVERY}">
+            配送<span class="notification request-notification" ng-if="deliveryNotification">!</span>
+        </ons-col>
+        <ons-col class="tab-switch_item" ng-click="changeRequest(RequestStatus.FITTING)" ng-class="{active: requestType == RequestStatus.FITTING}">
+            試着<span class="notification request-notification" ng-if="fittingNotification">!</span>
+        </ons-col>
+    </ons-row>
+    
+    <div class="ta-center mt-5px mb-5px" ng-show="requestType == RequestStatus.RESERVE">
+        <ons-button modifier="quiet" ng-click="changeFilter('00', true)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '00')}">
+            未処理
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('01', false)" ng-show="requestType == RequestStatus.RESERVE" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '01')}">
+            取置中
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('02', false)" ng-show="requestType != RequestStatus.DELIVERY" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '02')}">
+            処理済
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('99', false)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '99')}">
+            ALL
+        </ons-button>
+    </div>
+    
+     <div class="ta-center mt-5px mb-5px" ng-show="requestType == RequestStatus.DELIVERY">
+        <ons-button modifier="quiet" ng-click="changeFilter('00', true)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '00')}">
+            未処理
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('01', false)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '01')}">
+            処理済
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('99', false)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '99')}">
+            ALL
+        </ons-button>
+    </div>
+    
+    <div class="ta-center mt-5px mb-5px" ng-show="requestType == RequestStatus.FITTING">
+        <ons-button modifier="quiet" ng-click="changeFilter('00', false)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '00')}">
+            試着中
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('01', true)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '01')}">
+            期限切れ
+        </ons-button>
+        <ons-button modifier="quiet" ng-click="changeFilter('99', false)" class="filter-button" ng-class="{'filter-button-active': (filterStatus == '99')}">
+            ALL
+        </ons-button>
+    </div>
+    
+   <div ng-if="filterList.length == 0" class="ta-center" style="margin-top: 100px">
+        データはありません
+   </div>
+   
+    <table class="list-table">
+        <tr modifier="longdivider" class="reserve-list" ng-click="showDetail(request)"
+          ng-repeat="request in filterList = (requestList | requestFilter : {status: filterStatus, type: requestType, limitFlag: limitFlag})" >
+            
+            <td class="left fs-14px" ng-if="filterList.length > 0">
+                <div class="mt-10px mb-10px ml-10px">
+                    <span ng-if="request.type == RequestStatus.RESERVE">取置依頼</span>
+                    <span ng-if="request.type == RequestStatus.DELIVERY">配送依頼
+                        <span ng-show="request.paymentFlag == '01'">(前決済)</span>
+                        <span ng-show="request.paymentFlag == '02' || request.paymentFlag == '03'">(後決済)</span>
+                    </span><br />
+                    <span>依頼日:{{DateService.toDate(request.requestDate) | date: 'yyyy/MM/dd'}}</span><br />
+                    <span ng-if="request.limitDate" class="limit-date">(期限:{{request.limitDate | date: 'yyyy/MM/dd'}})</span>
+                    <span>依頼者:{{request.userName}}様</span><br />
+                    <span ng-if="request.deliveryUserName">(お届け先:{{request.deliveryUserName}}様)<br /></span>
+                    <span>更新日:{{DateService.toDate(request.updateDate) | date: 'yyyy/MM/dd HH:mm:ss'}}</span><br />
+                    <span ng-if="request.userMemo">顧客メモ:{{request.userMemo}}</span>
+                </div>
+            </td>
+            <td ng-if="filterList.length > 0" class="right fs-14px" style="min-width: 80px" ng-style="getStatusColor(request.status)">
+                <span ng-show="requestType == RequestStatus.RESERVE && !request.limitFlag">
+                    {{ReserveStatusName[request.status]}}
+                </span>
+                <span ng-show="requestType == RequestStatus.DELIVERY">
+                    {{DeliveryStatusName[request.status]}}
+                </span>
+                <span ng-show="requestType == RequestStatus.FITTING && !request.limitFlag">
+                    試着中
+                </span>
+                <span ng-show="requestType != RequestStatus.DELIVERY && request.limitFlag">
+                    期限切れ
+                </span>
+            </td>
+        </tr>
+    </table>
+</ons-page>

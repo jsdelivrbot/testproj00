@@ -1,0 +1,53 @@
+<ons-page ng-controller="ModelController" ng-init="init()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            モデル情報
+        </div>
+    </ons-toolbar>
+    
+    <table class="model-form block-center ta-center">
+        <tr>
+            <td>ニックネーム:</td>
+            <td>
+                <ons-input type="text" ng-model="form.nickname" modifier="underbar"></ons-input>
+            </td>
+        </tr>
+        <tr>
+            <td>身長(cm):</td>
+            <td>
+                <ons-input type="number" pattern="\d*" ng-model="form.tall" modifier="underbar"></ons-input>
+            </td>
+        </tr>
+        <tr>
+            <td>モデル説明:</td>
+            <td>
+                <ons-input type="text" ng-model="form.modelContents" modifier="underbar"></ons-input>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="ta-center">
+                <ons-button ng-click="create(form)" class="mt-10px">登録</ons-button>
+            </td>
+        </tr>
+    </table>
+    
+    <table class="model-list-table block-center ta-center">
+        <tr>
+            <th>ニックネーム</th>
+            <th>身長</th>
+            <th>モデル説明</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="model in modelList">
+            <td>{{model.nickname}}</td>
+            <td>{{model.tall}}cm</td>
+            <td>{{model.modelContents}}</td>
+            <td>
+                <ons-icon ng-click="delete(model.modelId)" size="25px" icon="fa-trash"></ons-icon>
+            </td>
+        </tr>
+    </table>
+</ons-page>

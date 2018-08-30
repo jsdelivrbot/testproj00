@@ -1,0 +1,391 @@
+textarea {
+    height: 50px;
+    border: 1px solid #CCC;
+    width: 100%;
+}
+
+/* リスト情報なし表示 */
+.no-list-data {
+    height: 300px;
+    padding-top: 200px;
+    text-align: center;
+}
+
+/* 共通 */
+.ta-center { text-align: center; }
+.ta-left { text-align: left; }
+.ta-right { text-align: right; }
+
+.block-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.va-middle { vertical-align: middle; }
+.va-top { vertical-align: top; }
+.va-bottom { vertical-align: bottom; }
+
+.fw-bold { font-weight: bold; }
+
+.fs-10px { font-size: 10px; }
+.fs-11px { font-size: 11px; }
+.fs-12px { font-size: 12px; }
+.fs-13px { font-size: 13px; }
+.fs-14px { font-size: 14px; }
+.fs-15px { font-size: 15px; }
+
+.bc-white { background-color: #FFF !important; }
+.red { color: #F00; }
+.blue { color: #00F; }
+
+.mar-auto { margin: auto; }
+.mar-0px { margin: 0px; }
+.mar-10px { margin: 10px; }
+.mar-20px { margin: 20px; }
+.mar-30px { margin: 30px; }
+
+.mt-0px { margin-top: 0px; }
+.mt-5px { margin-top: 5px; }
+.mt-10px { margin-top: 10px; }
+.mt-15px { margin-top: 15px; }
+.mt-20px { margin-top: 20px; }
+.ml-0px { margin-left: 0px; }
+.ml-5px { margin-left: 5px; }
+.ml-10px { margin-left: 10px; }
+.ml-15px { margin-left: 15px; }
+.ml-20px { margin-left: 20px; }
+.mb-0px { margin-bottom: 0px; }
+.mb-5px { margin-bottom: 5px; }
+.mb-10px { margin-bottom: 10px; }
+.mb-15px { margin-bottom: 15px; }
+.mb-20px { margin-bottom: 20px; }
+.mr-0px { margin-right: 0px; }
+.mr-5px { margin-right: 5px; }
+.mr-10px { margin-right: 10px; }
+.mr-15px { margin-right: 15px; }
+.mr-20px { margin-right: 20px; }
+
+.pad-auto { padding: auto; }
+.pad-0px { padding: 0px; }
+.pad-10px { padding: 10px; }
+.pad-20px { padding: 20px; }
+.pad-30px { padding: 30px; }
+
+.pt-0px { padding-top: 0px; }
+.pt-5px { padding-top: 5px; }
+.pt-10px { padding-top: 10px; }
+.pt-15px { padding-top: 15px; }
+.pt-20px { padding-top: 20px; }
+.pl-0px { padding-left: 0px; }
+.pl-5px { padding-left: 5px; }
+.pl-10px { padding-left: 10px; }
+.pl-15px { padding-left: 15px; }
+.pl-20px { padding-left: 20px; }
+.pb-0px { padding-bottom: 0px; }
+.pb-5px { padding-bottom: 5px; }
+.pb-10px { padding-bottom: 10px; }
+.pb-15px { padding-bottom: 15px; }
+.pb-20px { padding-bottom: 20px; }
+.pr-0px { padding-right: 0px; }
+.pr-5px { padding-right: 5px; }
+.pr-10px { padding-right: 10px; }
+.pr-15px { padding-right: 15px; }
+.pr-20px { padding-right: 20px; }
+
+.central {
+    display:table; /* 要素をテーブルのようにする */
+    width:100%;
+    height:100%;
+}
+
+.central-wrap {
+    display:table-cell; /* 要素をテーブルのようにする */
+    text-align:center; /* インライン要素の中央揃え */
+    vertical-align:middle; /* 天地中央に揃える（セル内の位置をmiddleに） */
+    margin:0 auto; /* wrapperから移動 */
+}
+
+.select { 
+    height: 35px;
+    border: 1px solid #CCC;
+    margin-top: 5px;
+}
+.tab-notification {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+.request-notification {
+    position: absolute;
+}
+/* onsenUI 書き換え */
+.page, .page__content {
+    background-color: #FFF !important;
+}
+
+.tab-switch {
+    height: 40px;
+}
+
+.tab-switch_item {
+    text-align: center;
+    font-size: 13px;
+    line-height: 40px;
+}
+
+/* reserve */
+.filter-button {
+    font-size: 14px;
+    text-align: center;   
+}
+
+.filter-button-active, .tab-switch_item.active {
+    background-color: #ccc;
+}
+
+.list-table {
+    border-collapse:collapse;
+    width: 100%;
+}
+
+.list-table tr:nth-child(1) {
+    border-top: 1px solid #000;
+}
+
+.reserve-list {
+    font-size: 14px;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.reserve-list td:nth-child(1) {
+    width: 90%;
+}
+
+.limit-date {
+    display: block;
+}
+
+.item-head {
+    background-color: #DDD;
+    padding-top: 8px !important;
+}
+
+.item-info {
+    font-size: 14px;
+}
+
+.reserve-info {
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+.form-table {
+    width: 90%;
+    margin: 10px auto;
+    font-size: 14px;
+}
+
+.model-form {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.model-list-table {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* chat */
+/* chat */
+.chat-container {
+    height: 100%;
+    max-height: 100%;
+    position: relative;
+}
+
+.chat-list {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 90%;
+    
+}
+
+.new-chat-button {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+}
+
+.scroller, .chat-list {
+    display: block;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    -ms-scroll-snap-type: mandatory;
+}
+
+#chat-frame {
+    min-width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: 90%;
+}
+
+.chat-talk {
+    overflow: hidden;
+    margin: 10px;
+    padding: 0;
+}
+
+.chat-talk span {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-talk .talk-name {
+    padding-left: 15px;
+    font-size: 12px;
+}
+
+.chat-talk .talk-time {
+    text-align: left;
+    margin-left: 15px;
+    font-size: 11px;
+    color: #CCC;
+}
+
+.chat-talk .talk-icon {
+    float: left;
+    width: auto;
+}
+
+.talk-image {
+    height: 100px;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.chat-talk .talk-content {
+    position: relative;
+    box-sizing: border-box;
+    width: auto;
+    min-height: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 0 50px 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    display: block !important;
+    line-height: 80% !important;
+    padding-top: 8px;
+}
+
+.chat-talk .talk-content:before {
+    position: absolute;
+    top: 8px;
+    left: -20px;
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #ccc;
+}
+
+.chat-talk .talk-content:after {
+    position: absolute;
+    top: 8px;
+    left: -18px;
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #fff;
+}
+
+.chat-talk.mytalk .talk-image {
+    text-align: right;
+    padding-right: 15px;
+}
+
+.chat-talk.mytalk .talk-name {
+    text-align: right;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+.chat-talk.mytalk .talk-content {
+    margin: 0 10px 0 50px;
+    color: #000;
+    background: #c9d5f4;
+}
+
+.chat-talk.mytalk .talk-time {
+    text-align: right;
+    margin-right: 15px;
+    font-size: 11px;
+    color: #CCC;
+}
+
+.chat-talk.mytalk .talk-content:before {
+    right: -20px;
+    left: auto;
+    border-color: transparent;
+    border-left-color: #ccc;
+}
+
+.chat-talk.mytalk .talk-content:after {
+    right: -18px;
+    left: auto;
+    border-color: transparent;
+    border-left-color: #c9d5f4;
+}
+
+.chat-input {
+    width: 100%;
+    height: 10%;
+}
+
+.chat-input table {
+    text-align:center; /* インライン要素の中央揃え */
+    vertical-align:middle; /* 天地中央に揃える（セル内の位置をmiddleに） */
+    margin:0 auto; /* wrapperから移動 */
+    width: 100%;
+    height: 100%;
+}
+
+#chat-input-file {
+    font-size: 100%;
+}
+
+#chat-input-text {
+    background-color: #FFF;
+    height: 80%;
+    width: 95%;
+    border: 1px solid #CCC;
+    -webkit-appearance:none;
+}
+
+#chat-submit-button {
+    height: 85%;
+    font-size: 12px;
+    color: #FFF;
+    border: none;
+    border-radius: 3px;
+    background-color: #ec006f;
+    -webkit-appearance:none;
+}

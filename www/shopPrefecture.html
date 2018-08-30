@@ -1,0 +1,15 @@
+<ons-page ng-controller="ConfigController" ng-init="prefInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">都道府県一覧</div>
+    </ons-toolbar>
+    
+    <ons-list>
+        <ons-list-item modifier="chevron" ng-repeat="prefecture in Prefectures.list | orderBy: 'id'"
+          ng-show="(prefShopList[prefecture.id])" ng-click="configNavi.pushPage('shopList.html', {data: {prefectureCode: prefecture.id}})">
+            {{prefecture.name}}
+        </ons-list-item>
+    </ons-list>
+</ons-page>

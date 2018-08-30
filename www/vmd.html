@@ -1,0 +1,60 @@
+<ons-page ng-controller="VmdController" ng-init="init()">
+    <ons-toolbar>
+        <div class="center">
+            スタイリング登録
+        </div>
+    </ons-toolbar>
+    
+    <div class="fs-15px">
+        <ons-row>
+            <ons-col width="40%" align="center" class="ta-center">
+                <img ng-src="{{form.image}}" alt="" width="100%" style="display:table-cell;vertical-align:middle" /><br />
+                <div class="ta-center">
+                    <ons-button class="fs-11px" ng-click="camera()">カメラ起動</ons-button>
+                </div>
+            </ons-col>
+            <ons-col>
+                <ons-list>
+                    <ons-list-header class="item-head ta-center">タイトル<span class="red">※</span></ons-list-header>
+                    <ons-list-item class="item-info">
+                        <ons-input type="text" modifier="underbar" ng-model="form.stylingName"></ons-input>
+                    </ons-list-item>
+                    <!--
+                    <ons-list-header class="item-head ta-center">キャッチコピー</ons-list-header>
+                    <ons-list-item class="item-info">
+                        <ons-input type="text" modifier="underbar" ng-model="form.catchCopy"></ons-input>
+                    </ons-list-item>
+                    -->
+                    <ons-list-header class="item-head ta-center">本文</ons-list-header>
+                    <ons-list-item class="item-info">
+                        <textarea ng-model="form.stylingContents"></textarea>
+                    </ons-list-item>
+                    
+                    <ons-list-header class="item-head ta-center">モデル</ons-list-header>
+                    <ons-list-item class="item-info">
+                        <select class="text-input select" ng-model="form.model" ng-options="model as model.nickname for model in modelList">
+                            <option value=""></option>
+                        </select>
+                    </ons-list-item>
+                </ons-list>
+            </ons-col>
+        </ons-row>
+        
+        <ons-list-header>関連商品</ons-list-header>
+        <div class="mar-10px ta-center">
+            品番1：<ons-input type="text" modifier="underbar" ng-model="form.itemCode1"></ons-input><br />
+            品番2：<ons-input type="text" modifier="underbar" ng-model="form.itemCode2"></ons-input><br />
+            品番3：<ons-input type="text" modifier="underbar" ng-model="form.itemCode3"></ons-input><br />
+            品番4：<ons-input type="text" modifier="underbar" ng-model="form.itemCode4"></ons-input><br />
+            品番5：<ons-input type="text" modifier="underbar" ng-model="form.itemCode5"></ons-input><br />
+            品番6：<ons-input type="text" modifier="underbar" ng-model="form.itemCode6"></ons-input><br />
+            品番7：<ons-input type="text" modifier="underbar" ng-model="form.itemCode7"></ons-input><br />
+            品番8：<ons-input type="text" modifier="underbar" ng-model="form.itemCode8"></ons-input><br />
+            品番9：<ons-input type="text" modifier="underbar" ng-model="form.itemCode9"></ons-input><br />
+            品番10：<ons-input type="text" modifier="underbar" ng-model="form.itemCode10"></ons-input>
+        </div>
+        <div class="ta-center mar-10px">
+            <ons-button ng-click="create()">登録</ons-button>
+        </div>
+    </div>
+</ons-page>

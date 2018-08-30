@@ -1,0 +1,74 @@
+<ons-page ng-controller="ReserveController" ng-init="reserveDetailInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            取り置き詳細
+        </div>
+    </ons-toolbar>
+    
+    <ons-row >
+        <ons-col width="40%" align="center">
+            <img ng-src="{{detail.imagePath1}}" alt="" width="100%" style="display:table-cell;vertical-align:middle" />
+        </ons-col>
+        <ons-col>
+            <ons-list>
+                <ons-list-header class="item-head ta-center">品番</ons-list-header>
+                <ons-list-item class="item-info">{{detail.itemCode}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">商品名</ons-list-header>
+                <ons-list-item class="item-info">{{detail.itemName}}</ons-list-item>
+                
+                <ons-list-header class="item-head ta-center">サイズ・カラー</ons-list-header>
+                <ons-list-item class="item-info">{{detail.sizeName}}({{detail.lcvSizeId}}):{{detail.colorName}}({{detail.lcvColorId}})</ons-list-item>
+                <!--
+                <ons-list-header class="item-head ta-center">数量</ons-list-header>
+                <ons-list-item class="item-info">{{item.count}}</ons-list-item>
+                -->
+            </ons-list>
+        </ons-col>
+    </ons-row>
+    
+    <ons-list-header class="item-head ta-center">取り置き情報</ons-list-header>
+    <div class="reserve-info mt-10px">
+        <table class="va-middle mar-auto pad-auto">
+            <tr>
+        		<td>取り置きID</td>
+                <td>{{detail.reserveNo}}</td>
+        	</tr>
+            <tr>
+                <td>依頼者</td>
+                <td>{{detail.userCode}}&nbsp;&nbsp;{{detail.userName}}様</td>
+            </tr>
+            <tr>
+                <td>依頼日</td>
+                <td>{{detail.reserveDate}}</td>
+            </tr>
+            <tr>
+                <td>取り置き期限</td>
+                <td>
+                    <ons-input ng-if="!disabledFlag" type="date" ng-model="detail.limitDate" class="va-middle" modifier="underbar" style="width: 150px"></ons-input>
+                    <div ng-if="disabledFlag">{{detail.limitDate}}</div>    
+                </td>
+            </tr>
+            <tr>
+                <td>メモ</td>
+                <td><ons-input type="text" class="va-middle" ng-model="detail.userMemo" modifier="underbar" style="width: 100%"></ons-input></td>
+            </tr>
+            <tr>
+                <td>ステータス</td>
+                <td>
+                    <select ng-if="!disabledFlag" style="width:100px" class="text-input select" ng-model="detail.status" ng-options="status.code as status.name for status in ReserveStatusList.list" ></select>
+                    <div ng-if="disabledFlag">
+                        {{ReserveStatusName[detail.status]}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="ta-center mt-10px mb-10px">
+            <ons-button ng-click="change(detail)">変更</ons-button>
+        </div>
+    </div>
+    
+</ons-page>

@@ -1,0 +1,25 @@
+<ons-page ng-controller="ConfigController" ng-init="shopListInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            店舗設定
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    
+    <div ng-if="!shopList || shopList.length == 0" class="no-list-data">
+        店舗はありません
+    </div>
+
+    <ons-list ng-if="shopList && shopList.length > 0">
+        <ons-list-item modifier="chevron longdivider" ng-repeat="shop in shopList" ng-click="changeShop(shop)">
+            <div class="list__item__title overflow">{{shop.brandName}}</div>
+            <div class="list__item__subtitle overflow">
+                {{shop.shopName}}
+            </div>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

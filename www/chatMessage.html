@@ -1,0 +1,28 @@
+<ons-page ng-controller="ChatController" ng-init="messageInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            受付メッセージ
+        </div>
+    </ons-toolbar>
+    
+    <div class="ta-center">
+        <p>
+            <div class="mt-10px mb-10px fs-15px" bind-html-compile="request.message1"></div>
+        </p>
+        <p>
+            <div class="mt-10px mb-10px fs-15px" bind-html-compile="request.message2"></div>
+        </p>
+        <p>
+            <div class="mt-10px mb-10px fs-15px" bind-html-compile="request.message3"></div>
+        </p>
+        <div class="ta-center">
+            <ons-button ng-click="start(request)">チャットを開始する</ons-button><br />
+        </div>
+        <div class="ta-center mt-20px">
+            <ons-button ng-click="chatNavi.popPage()">終了する</ons-button>
+        </div>
+    </div>
+</ons-page>

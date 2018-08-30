@@ -1,0 +1,55 @@
+<ons-page ng-controller="ChatController" ng-init="detailInit()">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button ng-click="disconnect()"></ons-back-button>
+        </div>
+        <div class="center">
+            チャット詳細
+        </div>
+        <div class="right">
+            <ons-toolbar-button ng-click="refresh()">
+                <ons-icon icon="fa-refresh"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <div id="chat-frame">
+        <div class="scroller">
+        <div ng-repeat="talk in talkList">
+            <p class="chat-talk" ng-class="{mytalk: talk.postType == '02'}">
+                <span class="talk-name" ng-if="talk.postType == '01'">お客様</span>
+                <span class="talk-name" ng-if="talk.postType == '02'">{{shopName}}</span>
+                <span class="talk-content" ng-if="talk.message" bind-html-compile="talk.message">
+                </span>
+                <span ng-if="talk.postImage" class="talk-image">
+                    <img ng-src="{{talk.postImage}}" height="100%" ng-click="showImage(talk.postImage)" alt="" />
+                </span>
+                <span class="talk-time">{{DateService.toDate(talk.postDate) | date: 'MM/dd HH:mm'}}</span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="chat-input">
+        <table>
+            <tr>
+                <td ng-click="camera()">
+                    <ons-icon id="chat-input-file" icon="fa-camera"></ons-icon>
+                </td>
+                <td style="width: 70%;">
+                    <!--<input type="text" id="chat-input-text" ng-model="inputMessage" />-->
+                    <textarea rows="1"id="chat-input-text" ng-model="inputMessage"></textarea>
+                </td>
+                <td style="width: 20%;">
+                    <button type="button" id="chat-submit-button" ng-click="submit()">送信</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <ons-modal var="imageModal">
+        <div class="ta-right pr-5px">
+            <ons-icon icon="fa-times-circle-o" size="30px" ng-click="imageModal.hide()"></ons-icon>
+        </div>
+        <img ng-src="{{modalImage}}" width="100%" alt="" />
+    </ons-modal>
+</ons-page>

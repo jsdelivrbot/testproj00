@@ -1,0 +1,159 @@
+/** top.html */
+
+/* バナー部分高さ */
+.banner-carousel {
+    height: 150px;
+}
+
+/* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+.banner-image {
+    width: 100%;
+    max-width: 100%;
+    height: 150px;
+}
+
+
+/* バナーページャー（丸点） サイズ・カラー */
+.carousel-pager {
+    text-align: center;
+    color: #a9a9a9;
+    font-size: 10px;
+}
+
+/* バナーページャー（丸点） 表示箇所のカラー */
+.active-pager { 
+    color: #000;
+}
+
+/* おすすめ商品表示欄 高さ */
+.recommend-carousel {
+    height: 100px;
+}
+
+/* おすすめ商品画像高さ（.recommend-carousel の高さと同じにしてください） */
+.recommend-image {
+    height: 100px;
+}
+
+
+/** top2.html */
+
+/* 画像の高さ */
+.contents-box{
+  position: relative;
+  height: 150px;
+}
+
+/* タイトルと日付を表示する高さ */
+.contents-box-common{
+  position: absolute;
+  width:100%;
+  bottom:0;
+  height:40%;
+}
+
+/* 背景グラデーションの指定
+    上から下に色が変化するグラデーション
+    linear-gradient(top,rgba(),rgba())
+    ⇒topは上から下へ色が変化する
+    ⇒rgbaの指定値は(赤,緑,青,透過率(1が最大値))
+*/
+
+/* タイトルと日付の背景グラデーション（白から黒パターン） */
+.contents-box-black {
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.0), rgba(0,0,0,0.7));
+  background: linear-gradient(top, rgba(255,255,255,0.0), rgba(0,0,0,0.7));  
+ }
+ 
+ /* タイトルと日付の背景グラデーション（黒から白パターン） */
+ .contents-box-white {
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.0), rgba(255,255,255,0.7));
+  background: linear-gradient(top, rgba(0,0,0,0.0), rgba(255,255,255,0.7));  
+ }
+ 
+ /* タイトルと日付の背景グラデーション（背景色なしパターン） */
+ .contents-box-none{
+  background: none;
+ }
+ 
+ /* タイトルと日付の文字サイズ、カラー */
+ .contents-text-common {
+     font-size:15px;
+     padding-left:3px;
+     color:#000;
+ }
+ 
+/* バナー用メディアクエリ */
+
+@media (max-width: 1440px) {
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 576px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 576px;
+    }
+}
+
+@media (max-width: 1080px) {
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 432px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 432px;
+    }
+}
+
+@media (max-width: 720px) {
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 288px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 288px;
+    }
+}
+
+@media (max-width:414px) { 
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 166px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 166px;
+    }
+
+}
+
+@media (max-width:375px) { 
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 150px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 150px;
+    }
+}
+
+@media (max-width:320px) { 
+    /* バナー部分高さ */
+    .banner-carousel {
+        height: 128px;
+    }
+    
+    /* バナー画像高さ（.banner-carousel の高さと同じにしてください） */
+    .banner-image {
+        height: 128px;
+    }
+}
